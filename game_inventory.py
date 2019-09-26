@@ -1,8 +1,4 @@
 
-# This is the file where you must work.
-# Write code in the functions (and create new functions) so that they work
-# according to the specification.
-
 def display_inventory(inventory):
         for i, s in inventory.items():
             print(i + ": " + str(s))
@@ -59,6 +55,7 @@ def print_table(inventory, order=None):
 
 
 def import_inventory(inventory, filename="import_inventory.csv"):
+
     inv_temp = []
     tmp = []
     with open (filename, "r") as f:
@@ -75,14 +72,6 @@ def import_inventory(inventory, filename="import_inventory.csv"):
 
 
 def export_inventory(inventory, filename="export_inventory.csv"):
-    '''
-    Export the inventory into a .csv file.
-
-    If the filename argument is None, it creates and overwrites a file
-    called "export_inventory.csv".
-
-    The file format is plain text with comma separated values (CSV).
-    '''
 
     tmp = []
     for key, value in inventory.items():
@@ -97,12 +86,3 @@ def export_inventory(inventory, filename="export_inventory.csv"):
             else:
                 f.write(item)
         
-
-#inv = {'rope': 1, 'gold coin': 2, 'dagger': 1, 'arrow': 1}
-#dragon_loot = ['alma','gold coin', 'dagger', 'gold coin', "orban balkeze", 'gold coin', 'ruby', 'alma']
-#export_inventory(inv)
-#print_table(inv)
-#print_table(inv, "count,desc")
-#print_table(inv, "count,asc")
-#import_inventory(inv, "test_inventory.csv")
-#print_table(inv, "count,asc")
