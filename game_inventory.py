@@ -56,33 +56,39 @@ def print_table(inventory, order=None):
 
 def import_inventory(inventory, filename="import_inventory.csv"):
 
-    inv_temp = []
-    tmp = []
-    with open (filename, "r") as f:
-        inv_temp.append(f.readline())
+    try:
+        inv_temp = []
+        tmp = []
+        with open (filename, "r") as f:
+            inv_temp.append(f.readline())
 
-    for i in inv_temp:
-        tmp.append(i.split(",",-1))
+        for i in inv_temp:
+            tmp.append(i.split(",",-1))
 
-    for i in tmp[0]:
-        if i in inventory:
-            inventory[i] = inventory[i] + 1
-        else:
-            inventory[i] = 1
+        for i in tmp[0]:
+            if i in inventory:
+                inventory[i] = inventory[i] + 1
+            else:
+                inventory[i] = 1
+    except:
+        print(f"File '{filename}' not found!")
 
 
 def export_inventory(inventory, filename="export_inventory.csv"):
 
-    tmp = []
-    for key, value in inventory.items():
-        for x in range(value):
-            tmp.append(key)
+    try:
+        tmp = []
+        for key, value in inventory.items():
+            for x in range(value):
+                tmp.append(key)
 
-    with open(filename, "w") as f:
-        for item in tmp:
-            if x != len(tmp)-1:
-                f.write("%s," % item)
-                x+=1
-            else:
-                f.write(item)
+        with open(filename, "w") as f:
+            for item in tmp:
+                if x != len(tmp)-1:
+                    f.write("%s," % item)
+                    x+=1
+                else:
+                    f.write(item)
+    except:
+        print(f"You don't have permission creating file '{filename}'!")
         
